@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    depends_on: 
+      - database
+    environment: 
+      URL_DATABASE: mongodb://database:27017/centria_test
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules 
+  
+  database:
+    image: mongo

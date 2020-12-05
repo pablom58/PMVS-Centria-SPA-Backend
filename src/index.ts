@@ -1,5 +1,7 @@
-import express , { Application  } from 'express'
+import 'reflect-metadata'
 import './store/mongo'
+
+import express , { Application  } from 'express'
 
 import morgan from 'morgan'
 import cors from 'cors'
@@ -7,7 +9,6 @@ import cors from 'cors'
 import { PORT } from './config'
 
 import Router from './network/router'
-import { errors } from './network/errors'
 
 const app : Application = express()
 
@@ -19,6 +20,5 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 Router(app)
-app.use(errors)
 
 app.listen(app.get('port'),() => console.log(`Server on port: ${app.get('port')}`))

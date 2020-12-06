@@ -25,6 +25,10 @@ export class User {
     @Field()
     @Property()
     userHash ? : string
+    
+    @Field()
+    @Property()
+    stripeId ? : string
 }
 
 export const UserModel = getModelForClass(User)

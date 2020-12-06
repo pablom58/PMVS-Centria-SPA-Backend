@@ -1,7 +1,7 @@
 import { AuthData } from './types'
 
 export interface EncryptPasswordInterface {
-    ( password : string ) : Promise<String>
+    ( password : string ) : Promise<string>
 }
 
 export interface ValidatePasswordInterface {
@@ -10,6 +10,10 @@ export interface ValidatePasswordInterface {
 
 export interface GenerateTokenInterface {
     ( data : AuthData ) : string
+}
+
+export interface ValidateAuthenticationTokenInterface {
+    ( token : string ) : string | AuthData
 }
 
 export interface GenerateHashInterface {

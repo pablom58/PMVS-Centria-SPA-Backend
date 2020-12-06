@@ -1,31 +1,25 @@
-import { Resolver , Query , Mutation , Arg } from 'type-graphql'
-import { User , UserModel } from './store' 
+import { Resolver , Query , Mutation , Arg , UseMiddleware , Ctx } from 'type-graphql'
+import { User } from './store'
 import { UserInput } from './types/inputs'
+
+import { Context } from '../../middlewares/types/interfaces'
+import { AuthenticationToken } from '../../middlewares/AuthenticationToken'
+
+import * as UserController from './controller'
 
 @Resolver(of => User)
 export class UserResolver {
 
     @Query(() => User)
-    async findUserById(@Arg('id') _id : string){
-        const user = await UserModel.findById(_id)
+    @UseMiddleware(AuthenticationToken)
+    async findAuthenticatedUser(@Ctx(){ payload } : Context){
+        const user = await UserController.findUserById(payload!.userId)
         return user
     }
 
     @Mutation(() => User)
-    async createUser(@Arg('data'){
-        username,
-        fullName,
-        password,
-        email
-    } : UserInput) : Promise<User> {
-        const user = await UserModel.create({
-            username,
-            fullName,
-            password,
-            email
-        })
-        
-        await user.save()
+    async createUser(@Arg('data') data : UserInput) : Promise<User> {
+        const user = UserController.registerUser(data)
         return user
     }
 }

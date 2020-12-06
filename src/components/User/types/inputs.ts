@@ -5,7 +5,7 @@ import { User } from '../store'
 @InputType()
 export class UserInput implements Partial<User>{
     @Field()
-    @Length(10,50)
+    @Length(5,50)
     username ! : string 
 
     @Field()

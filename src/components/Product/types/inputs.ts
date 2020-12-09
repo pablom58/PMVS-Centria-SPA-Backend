@@ -19,6 +19,9 @@ export class ProductInput implements Partial<Product> {
     @Field()
     @Length(10,250)
     description ! : string
+
+    @Field()
+    imageUrl ! : string
 } 
 
 @InputType()

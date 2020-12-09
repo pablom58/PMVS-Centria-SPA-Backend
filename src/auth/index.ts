@@ -13,7 +13,6 @@ import {
 } from './types/interfaces'
 
 import { AuthData } from './types/types'
-import { token } from 'morgan'
 
 export const encryptPassword : EncryptPasswordInterface = async (password : string) => {
     let salt = await bcrypt.genSalt(12)

@@ -27,9 +27,9 @@ export const getProductById : GetProductByIdInterface = async ( _id : string ) =
 }
 
 export const createProduct : CreateProductInterface = async ( user_id : string , data : ProductInput ) => {
-    const { name , price , amount , description } = data
+    const { name , price , amount , description , imageUrl } = data
 
-    if(!user_id || !name || !price || !amount || !description)
+    if(!user_id || !name || !price || !amount || !description || !imageUrl)
         throw new Error('Not enough data')
 
     const product = await ProductModel.create({
@@ -37,7 +37,8 @@ export const createProduct : CreateProductInterface = async ( user_id : string ,
         name,
         price,
         amount,
-        description
+        description,
+        imageUrl
     })
 
     if(!product)

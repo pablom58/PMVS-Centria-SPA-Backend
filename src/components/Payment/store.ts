@@ -29,6 +29,10 @@ export class Payment {
     @Field()
     @Property()
     amount ! : number
+
+    @Field()
+    @Property()
+    url ! : string
 }
 
 export const PaymentModel = getModelForClass(Payment)

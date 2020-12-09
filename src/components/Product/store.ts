@@ -29,6 +29,10 @@ export class Product {
     @Field()
     @Property()
     description ! : string
+
+    @Field()
+    @Property()
+    imageUrl ! : string
 } 
 
 export const ProductModel = getModelForClass(Product)

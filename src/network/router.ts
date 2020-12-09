@@ -5,6 +5,7 @@ import { buildSchema } from 'type-graphql'
 import { AuthResolver } from '../components/Auth/resolver'
 import { UserResolver } from '../components/User/resolver'
 import { ProductResolver } from '../components/Product/resolver'
+import { PaymentResolver } from '../components/Payment/resolver'
 
 interface RouterInterface {
     (server : Application) : void
@@ -16,7 +17,8 @@ const Router : RouterInterface = async (server : Application) => {
             resolvers: [
                 AuthResolver,
                 UserResolver,
-                ProductResolver
+                ProductResolver,
+                PaymentResolver
             ]
         }),
         context: ({ req , res }) => ({ req , res })

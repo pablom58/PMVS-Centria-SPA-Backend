@@ -8,7 +8,6 @@ import { Context } from '../../middlewares/types/interfaces'
 import { AuthenticationToken } from '../../middlewares/AuthenticationToken'
 
 import * as ProductController from './controller'
-import { UpdateProduct } from './types/types'
 
 @Resolver(of => Product)
 export class ProductResolver {
